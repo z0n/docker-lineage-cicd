@@ -9,13 +9,15 @@ pipeline {
     stage('Run build') {
       steps {
         configFileProvider([configFile(fileId: 'lineageos-enchilada-env', targetLocation: './.env')]) {}
-        sh 'docker-compose -f docker-compose.enchilada.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from node'
+        mkdir ./zips
+        mkdir ./logs
+        sh 'docker-compose -f docker-compose.enchilada.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from lineageos-build-enchilada'
       }
     }
 
     stage('Archive build artifacts') {
       steps {
-        archiveArtifacts 'zips/**, logs/**'
+        archiveArtifacts 'zips/enchilada/**, logs/**'
       }
     }
 

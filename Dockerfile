@@ -17,6 +17,7 @@ ENV USERSCRIPTS_DIR /srv/userscripts
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER root
+ENV JENKINS_UID 1000
 
 # Configurable environment variables
 ####################################
@@ -130,7 +131,7 @@ ENV DELETE_OLD_LOGS 0
 ENV OPENDELTA_BUILDS_JSON ''
 
 # set the java tool options max memory size
-ENV JAVA_TOOL_OPTIONS "-Xmx6g"
+ENV JAVA_TOOL_OPTIONS "-Xmx8g"
 
 # You can optionally specify a USERSCRIPTS_DIR volume containing these scripts:
 #  * begin.sh, run at the very beginning
@@ -193,6 +194,8 @@ WORKDIR $SRC_DIR
 # Allow redirection of stdout to docker logs
 ############################################
 RUN ln -sf /proc/1/fd/1 /var/log/docker.log
+
+USER $JENKINS_UID
 
 # Set the entry point to init.sh
 ################################

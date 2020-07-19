@@ -9,13 +9,15 @@ pipeline {
     stage('Run build') {
       steps {
         configFileProvider([configFile(fileId: 'lineageos-amami-env', targetLocation: './.env')]) {}
-        sh 'docker-compose -f docker-compose.amami.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from node'
+        mkdir ./zips
+        mkdir ./logs
+        sh 'docker-compose -f docker-compose.amami.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from lineageos-build-amami'
       }
     }
 
     stage('Archive build artifacts') {
       steps {
-        archiveArtifacts 'zips/**, logs/**'
+        archiveArtifacts 'zips/amami/**, logs/**'
       }
     }
 
