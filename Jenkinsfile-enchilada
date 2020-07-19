@@ -9,8 +9,8 @@ pipeline {
     stage('Run build') {
       steps {
         configFileProvider([configFile(fileId: 'lineageos-enchilada-env', targetLocation: './.env')]) {}
-        mkdir ./zips
-        mkdir ./logs
+        sh 'mkdir -p ./zips'
+        sh 'mkdir -p ./logs'
         sh 'docker-compose -f docker-compose.enchilada.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from lineageos-build-enchilada'
       }
     }
