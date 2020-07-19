@@ -1,6 +1,6 @@
 version: "3"
 services:
-  lineageos:
+  lineageos-build-amami:
     container_name: lineageos-build-amami
     build:
       context: .
