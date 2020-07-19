@@ -13,4 +13,5 @@ services:
       - ./logs:/srv/logs
       - /home/jenkins/android/cache:/srv/ccache
       - /home/jenkins/android/keys:/srv/keys
+      - /home/jenkins/android/userscripts:/srv/userscripts
       - ./local_manifests_enchilada:/srv/local_manifests

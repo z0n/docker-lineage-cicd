@@ -17,7 +17,6 @@ ENV USERSCRIPTS_DIR /srv/userscripts
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER root
-ENV JENKINS_UID 1000
 
 # Configurable environment variables
 ####################################
@@ -194,8 +193,6 @@ WORKDIR $SRC_DIR
 # Allow redirection of stdout to docker logs
 ############################################
 RUN ln -sf /proc/1/fd/1 /var/log/docker.log
-
-USER $JENKINS_UID
 
 # Set the entry point to init.sh
 ################################
