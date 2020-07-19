@@ -1,0 +1,16 @@
+version: "3"
+services:
+  lineageos:
+    container_name: lineageos-build-enchilada
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - /home/jenkins/android/lineageos:/srv/src
+      - ./zips:/srv/zips
+      - ./logs:/srv/logs
+      - /home/jenkins/android/cache:/srv/ccache
+      - /home/jenkins/android/keys:/srv/keys
+      - ./local_manifests_enchilada:/srv/local_manifests

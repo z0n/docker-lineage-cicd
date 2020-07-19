@@ -35,7 +35,7 @@ ENV CCACHE_SIZE 50G
 
 # Environment for the LineageOS branches name
 # See https://github.com/LineageOS/android_vendor_cm/branches for possible options
-ENV BRANCH_NAME 'lineage-16.0'
+ENV BRANCH_NAME 'lineage-17.1'
 
 # Environment for the device list (separate by comma if more than one)
 # eg. DEVICE_LIST=hammerhead,bullhead,angler
@@ -63,7 +63,7 @@ ENV BUILD_OVERLAY false
 ENV LOCAL_MIRROR false
 
 # If you want to preserve old ZIPs set this to 'false'
-ENV CLEAN_OUTDIR false
+ENV CLEAN_OUTDIR true
 
 # Change this cron rule to what fits best for you
 # Use 'now' to start the build immediately
@@ -80,7 +80,7 @@ ENV CLEAN_AFTER_BUILD true
 ENV WITH_SU false
 
 # Provide a default JACK configuration in order to avoid out-of-memory issues
-ENV ANDROID_JACK_VM_ARGS "-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G"
+ENV ANDROID_JACK_VM_ARGS "-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx8G"
 
 # Custom packages to be installed
 ENV CUSTOM_PACKAGES ''

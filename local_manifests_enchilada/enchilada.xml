@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <project name="luk1337/proprietary_vendor_oneplus" path="vendor/oneplus" remote="github" />
+  <project name="LineageOS/android_device_oneplus_enchilada" path="device/oneplus/enchilada" remote="github" />
+  <project name="LineageOS/android_device_oneplus_sdm845-common" path="device/oneplus/sdm845-common" remote="github" />
+  <project name="LineageOS/android_kernel_oneplus_sdm845" path="kernel/oneplus/sdm845" remote="github" />
+</manifest>

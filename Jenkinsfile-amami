@@ -1,0 +1,29 @@
+pipeline {
+  agent {
+    node {
+      label 'docker'
+    }
+
+  }
+  stages {
+    stage('Run build') {
+      steps {
+        configFileProvider([configFile(fileId: 'lineageos-amami-env', targetLocation: './.env')]) {}
+        sh 'docker-compose -f docker-compose.amami.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from node'
+      }
+    }
+
+    stage('Archive build artifacts') {
+      steps {
+        archiveArtifacts 'zips/**, logs/**'
+      }
+    }
+
+    stage('Clean up') {
+      steps {
+        sh 'docker-compose -f docker-compose.amami.yml down --rmi local'
+      }
+    }
+
+  }
+}
